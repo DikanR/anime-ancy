@@ -103,8 +103,9 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
         <th>Pengirim</th>
         <th>status</th>
         <th>kepada user</th>
-        <th>TanggalDibuat</th>
-        <th>expiration date</th>
+        <th>Tanggal dibuat</th>
+        <th>Tanggal konfirmasi</th>
+        <th>Jumlah</th>
         <?php if ($_SESSION['level'] == 1) : ?>
           <th>Aksi</th>
         <?php endif; ?>
@@ -126,6 +127,7 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
         <td> <?= $arsip_penarikan_uang['user']; ?></td>
         <td> <?= $arsip_penarikan_uang['tgl_dibuat'] ?? 'Belum Dikonfirmasi'; ?></td>
         <td> <?= $arsip_penarikan_uang['tgl_disetujui'] ?? 'Belum Dikonfirmasi'; ?></td>
+        <td>Rp. <?= $arsip_penarikan_uang['jumlah_penarikan']; ?></td>
 
         <td class="text-center" width="20%">
           <?php if ($_SESSION['level'] == 1 && $arsip_penarikan_uang['status'] == 0) : ?>
@@ -144,7 +146,7 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
         <?php foreach($data_bylogin as $arsip_penarikan_uang) : ?>
     <tr>
         <td> <?= $no++; ?></td>
-        <td> <?= $arsip_penarikan_uang['jumlah_penarikan']; ?></td>
+        <td> <?= select("SELECT judul FROM terbit WHERE id_judul = {$arsip_penarikan_uang['id_judul']}")[0]['judul']; ?></td>
         <td> <?= $arsip_penarikan_uang['bank']; ?></td>
         <td> <?= $arsip_penarikan_uang['rekening']; ?></td>
         <td> <?= $arsip_penarikan_uang['nama_pengirim']; ?></td>
@@ -152,6 +154,7 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
         <td> <?= $arsip_penarikan_uang['user']; ?></td>
         <td> <?= $arsip_penarikan_uang['tgl_dibuat'] ?? 'Belum Dikonfirmasi'; ?></td>
         <td> <?= $arsip_penarikan_uang['tgl_disetujui'] ?? 'Belum Dikonfirmasi'; ?></td>
+        <td>Rp. <?= $arsip_penarikan_uang['jumlah_penarikan']; ?></td>
     </tr>
         <?php endforeach; ?>
         <?php endif; ?>

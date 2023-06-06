@@ -63,14 +63,15 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
   <thead>
       <tr>
         <th>No</th>
-        <th>Jumlah penarikan</th>
+        <th>Judul</th>
         <th>Bank</th>
         <th>Rekening</th> 
         <th>Pengirim</th>
         <th>status</th>
         <th>kepada user</th>
-        <th>Dibuat</th>
-        <th>Dikonfirmasi</th>
+        <th>Tanggal dibuat</th>
+        <th>Tanggal konfirmasi</th>
+        <th>Jumlah</th>
       </tr>
   </thead>
 
@@ -81,6 +82,7 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
     <?php foreach($data_arsip_penarikan_uang as $arsip_penarikan_uang) : ?>
     <tr>
         <td> <?= $no++; ?></td>
+        <td> <?= select("SELECT judul FROM terbit WHERE id_judul = {$arsip_penarikan_uang['id_judul']}")[0]['judul']; ?></td>
         <td> <?= $arsip_penarikan_uang['bank']; ?></td>
         <td> <?= $arsip_penarikan_uang['rekening']; ?></td>
         <td> <?= $arsip_penarikan_uang['nama_pengirim']; ?></td>
@@ -101,6 +103,7 @@ $data_bylogin = select("SELECT * FROM arsip_penarikan_uang WHERE user = '$userna
         <?php foreach($data_bylogin as $arsip_penarikan_uang) : ?>
     <tr>
         <td> <?= $no++; ?></td>
+        <td> <?= select("SELECT judul FROM terbit WHERE id_judul = {$arsip_penarikan_uang['id_judul']}")[0]['judul']; ?></td>
         <td> <?= $arsip_penarikan_uang['bank']; ?></td>
         <td> <?= $arsip_penarikan_uang['rekening']; ?></td>
         <td> <?= $arsip_penarikan_uang['nama_pengirim']; ?></td>
