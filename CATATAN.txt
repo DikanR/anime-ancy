@@ -1,0 +1,8 @@
+Cara buka local server
+Di terminal :
+php -S 0.0.0.0:1234
+
+Setelah itu ke browser
+Di browser : 
+http://localhost:1234
+(port sesuaikan dengan terminal. untuk kasus ini yang dimasukkan adalah 1234)

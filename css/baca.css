@@ -1,0 +1,10 @@
+
+.container {
+  text-align: center;
+}
+
+.container img{
+   width: 600px; 
+   object-fit: cover;
+ }
+ 
